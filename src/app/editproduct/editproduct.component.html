@@ -1,0 +1,14 @@
+<div class="container">
+  <label>Pro_id</label><input type="number" [(ngModel)]="id"><br>
+  <label>Pro_name</label><input type="text" [(ngModel)]="name"><br>
+  <label>Pro_price</label><input type="number" [(ngModel)]="price"><br>
+  <label>Pro_image</label><img src={{y}} height="100px" width="100px"><br>
+  <label>Pro_mfg</label><input type="mfg" [(ngModel)]="mfg"><br>
+  <label>Pro_soh</label><input type="number" [(ngModel)]="soh">
+  </div>
+  <!-- <button type="button" (click)="onadd()" class="btn btn-default">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  </button> -->
+
+        <button type="button" (click)="onupdate()">Update
+        </button>

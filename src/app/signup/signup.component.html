@@ -1,0 +1,39 @@
+<h1 style="text-align: center">SIGN UP FORM</h1>
+<div class="container">
+  <div class="form-group">
+  EMAIL_ID
+  <input type="text" class="form-control" [(ngModel)]="email_id">
+  </div>
+  <div class="form-group">
+ USER_NAME
+ <input type="text" class="form-control" [(ngModel)]="user_name">
+</div>
+<div class="form-group">
+  PASSWORD
+  <input type="password" class="form-control" [(ngModel)]="password">
+ </div>
+<div class="form-group">
+  MOBILE_NO
+   <input type="text" class="form-control" [(ngModel)]="mobile_no">
+  </div>
+  <div class="form-group">
+    CITY
+    <input type="text" class="form-control" [(ngModel)]="city">
+   </div>
+  <div class="form-group">
+    GENDER
+    <input type="radio" name="r1" value="male"  [(ngModel)]="gender">Male
+      <input type="radio" name="r1" value="female"  [(ngModel)]="gender">Female
+    </div>
+    <div class="form-group">
+    ADDRESS
+    <textarea rows="10" cols="30" class="form-control" [(ngModel)]="address">
+
+    </textarea>
+
+  </div>
+  <button type="button" (click)="onlogin()">LOGIN
+  </button>
+    <button type="button" (click)="onsignup()">SIGN UP
+  </button>
+</div>

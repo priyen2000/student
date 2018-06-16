@@ -1,0 +1,21 @@
+ <h1 style="text-align: center" class="w3-jumbo w3-animate-top">LOG IN FORM</h1>
+<div class="container">
+  <div class="form-group">
+ EMAIL_ID
+ <input type="text" class="form-control" [(ngModel)]="email_id">
+</div>
+<div class="form-group">
+  PASSWORD
+  <input type="text" class="form-control" [(ngModel)]="password">
+ </div>
+ <div class="row">
+   <div class="col-md-1 form-group">
+ <button (click)="onlogin()" class="btn btn-lg btn-primary" style="width: 500px;">LOG IN</button>
+</div>
+<div class="col-md-6 form-group">
+ <button (click)="onsignup()" class="btn btn-lg btn-primary" style="width: 500px; margin-left: 500px;">SIGN UP</button>
+</div>
+<div class="col-md-6 form-group">
+  <button (click)="onforget()" class="btn btn-lg btn-danger" style="width: 500px;">FORGET PASSWORD?</button>
+ </div>
+</div>

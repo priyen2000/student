@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { student1 } from './student';
+import { StudentService } from '../student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student',
@@ -15,12 +17,9 @@ totm:number;
 res:string;
 flag:boolean=false;
 x:string;
- arr:student1[]=[
-  new student1(1,'priyen',9624062317,'male',70,'pass'),
-  new student1(2,'raj',7984689678,'male',80,'pass')
-]
+ arr:student1[]=[];
 i:number;
-  constructor() { }
+  constructor(private _xyz:StudentService,private _route:Router) { }
 onadd()
   {
       if(this.totm>35)
@@ -35,25 +34,42 @@ onadd()
         this.flag=false;
       } else {
         this.flag=true;
+
       }
       }
       onadd1()
       {
-        this.arr.push(new student1(this.id,this.name,this.mobno,this.gender,this.totm,this.x));
-      }
-      oncancle()
+        this._xyz.getAddStudent(new student1(this.id,this.name,this.mobno,this.gender,this.totm,this.x)).subscribe(
+          (data:any)=>{
+            this.arr.push(new student1(this.id,this.name,this.mobno,this.gender,this.totm,this.x));
+
+          }
+        );
+         }
+
+      oncancel()
       {
         this.flag=false;
       }
-    ondelete(i)
+    ondelete(item)
     {
-      this.arr.splice(i,1);
-    }
-    onupdate(x)
-    {
-      this.arr[x].mobno=parseInt(prompt('please enter mobno to update'));
-    }
-  ngOnInit() {
-  }
+      this._xyz.deleteStudent(item).subscribe(
+        (data:any)=>{
+          this.arr.splice(this.arr.indexOf(item),1);
 
+        }
+      );
+       }
+       onupdate(item:student1)
+       {
+         this._route.navigate(['/editstudent',item.id]);
+       }
+  ngOnInit() {
+    this._xyz.getAllStudent().subscribe(
+      (data:student1[])=>{
+        this.arr=data;
+        console.log(this.arr);
+      }
+  );
+}
 }

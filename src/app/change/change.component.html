@@ -1,0 +1,21 @@
+<h1 style="text-align: center">CHANGE PASSWORD?</h1>
+<div class="container">
+  <div class="form-group">
+  EMAIL_ID
+  <input type="text" class="form-control"  [(ngModel)]="email_id">
+  </div>
+<div class="form-group">
+  OLD PASSWORD
+  <input type="text" class="form-control" [(ngModel)]="password">
+ </div>
+ <div class="form-group">
+  NEW PASSWORD
+  <input type="text" class="form-control" [(ngModel)]="newp">
+ </div>
+ <div class="form-group">
+  CONFIRM PASSWORD
+  <input type="text" class="form-control" [(ngModel)]="conp">
+ </div>
+ </div>
+ <button (click)="onsave()">SAVE</button>
+ <button (click)="oncancle()">CANCLE</button>

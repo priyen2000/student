@@ -1,0 +1,112 @@
+
+<div class="container">
+ <div class="row">
+ </div>
+ <div class="row">
+    <div class="col-md-3">
+        <ul class="list-group">
+            <li class="list-group-item">emp_id</li>
+            <li class="list-group-item">emp_name</li>
+            <li class="list-group-item">emp_gender</li>
+            <li class="list-group-item">emp_hobby</li>
+            <li class="list-group-item">emp_city</li>
+          </ul>
+    </div>
+    <div class="col-md-9">
+
+        <div class="row">
+            <div class="col-sm-6 col-md-4" *ngFor="let item of arr;let i=index">
+              <div class="thumbnail">
+
+                <div class="caption">
+                  <p>{{item.id}}</p>
+                  <h3>{{item.name}}</h3>
+                  <img src="{{this.x}}" alt="no image" height="100px" width="100px">
+                  <p>{{item.city}}</p>
+                  <p>{{item.hobby}}</p>
+                  <p>{{item.gender}}</p>
+                  <p><a class="btn btn-primary" (click)="ondel(i)" role="button">Delete</a>
+                  <a class="btn btn-primary" (click)="onupdate(item)" role="button">update</a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="row">
+      <nav class="navbar navbar-default">
+        FOOTER
+        </nav>
+  </div>
+</div>
+<!-- <table class="table">
+    <thead>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>IMAGE</th>
+        <th>GENDER</th>
+        <th>CITY</th>
+        <th>HOBBY</th>
+      </thead>
+      <tr *ngFor="let item of arr">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td><img src={{item.img}} height="120px" width="120px"></td>
+        <td>{{item.city}}</td>
+        <td>{{item.gender}}</td>
+        <td>{{item.hobby}}</td>
+      </tr>
+    </table> -->
+    <div class="xyz">
+    <button type="button" (click)="onadd()" style="margin-left:150px;" class="btn btn-default">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </button>
+</div>
+<div class="conntainer" *ngIf="flag">
+    <div class="form-group">
+    ID
+    <input type="number" class="form-control" [(ngModel)]="id">
+    </div>
+    <div class="form-group">
+   NAME
+   <input type="text" class="form-control" [(ngModel)]="name">
+  </div>
+  <div class="form-group">
+    IMG
+     <input type="number" [ngModel]="img" class="form-control">
+    </div>
+    <div class="form-group">
+      GENDER
+      <input type="radio" name="r1" value="male"  [(ngModel)]="gender">Male
+        <input type="radio" name="r1" value="female"  [(ngModel)]="gender">Female
+      </div>
+      <div class="form-group">
+          hobby
+      <input type="text"  class="form-control" [(ngModel)]="h1">
+    </div>
+    <div class="form-group">
+        CITY
+        <select [(ngModel)]="city" class="form-control">
+          <option>Ahmedabad</option>
+          <option>Surat</option>
+          <option>Baroda</option>
+          </select>
+        </div>
+    <div class="row">
+        <div class="col-md-6">
+                <button class="btn btn-lg btn-primary form-control" (click)="onclickAdd()" >ADD</button>
+        </div>
+        <div class="col-md-6">
+                <button class="btn btn-lg btn-danger form-control" (click)="flag=false" >CANCEL</button>
+        </div>
+  </div>
+
+
+
+
+
+
+
+
+
+

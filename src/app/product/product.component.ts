@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { product1 } from './product';
-
+import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -9,32 +10,43 @@ import { product1 } from './product';
 export class ProductComponent implements OnInit {
 i:number=0;
 x:number;
-y:string='../assets/IMG_20171224_155204.jpg';
+y:string='../../assets/p1.jpg.jpg';
 id:number;
 name:string;
 price:number;
-img:string;
 mfg:string;
 soh:number;
-  arr:product1[]=[
-  new product1(1,'laptop',45000,'','lenovo',30),
-  new product1(2,'mobile',15000,'','mi',40)
-]
-ondelete()
+  arr:product1[]=[];
+ondelete(i)
 {
-  this.arr.splice(this.i,1);
+ this._xyz.DeleteProduct(i).subscribe(
+   (data:any)=>{
+    this.arr.splice(this.arr.indexOf(i),1);
+   }
+ );
 }
-onupdate(x)
+onupdate(item:product1)
 {
-  this.arr[x].soh=parseInt(prompt('please enter stock on hand to update'));
+  this._route.navigate(['/editproduct',item.id]);
 }
 onadd()
 {
-  this.arr.push(new product1(this.id,this.name,this.price,this.img,this.mfg,this.soh));
+  this._xyz.AddProduct(new product1(this.id,this.name,this.price,this.y,this.mfg,this.soh)).subscribe(
+    (data:any)=>{
+      this.arr.push(new product1(this.id,this.name,this.price,this.y,this.mfg,this.soh));
+    }
+  );
+  // this.arr.push(new product1(this.id,this.name,this.price,this.y,this.mfg,this.soh));
 }
-  constructor() { }
+  constructor(private _xyz:ProductService,private _route:Router) { }
 
   ngOnInit() {
+    this._xyz.getAllProduct().subscribe(
+      (data:product1[])=>{
+        this.arr=data;
+        console.log(this.arr);
+      }
+  );
+  }
   }
 
-}
